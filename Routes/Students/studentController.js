@@ -27,6 +27,8 @@ async function addStudent(req, res){
         const sql = `INSERT INTO Students VALUES (${student_id} , '${first_name}' , '${last_name}', '${birthday}')`;
         db.query(sql, (err)=>{
             if(err){
+                console.log(err.code)
+                console.log('line 31')
                 throw err;
             }
             res.json({message: 'Student added...'})
@@ -58,7 +60,6 @@ async function updateStudentById(req, res){
     }
 }
         
-
 async function deleteStudentById(req, res){
     const student_id = req.params.id;
     const sql = `DELETE FROM Students WHERE student_id = ${student_id}`

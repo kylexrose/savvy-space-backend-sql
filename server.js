@@ -4,9 +4,13 @@ const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '123456',
-    database : 'savvySpaceSql'
+    database : 'savvySpaceSql',
+    multipleStatements: true
 });
 
-db.connect();
+db.connect(err=>{
+    if(err) console.log(err);
+    console.log('MySql Connected');
+});
 
 module.exports = db;
