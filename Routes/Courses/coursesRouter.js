@@ -8,12 +8,12 @@ const {
     deleteCourseById
 } = require('./coursesController')
 
-router.get('/find-course/:id', getCourseById);
+// router.get('/find-course/', getCourseById);
 
-router.post('/add-course', addCourse);
+// router.post('/add-course', addCourse);
 
-router.put('/update-course', updateCourseById);
+// router.put('/update-course', updateCourseById);
 
-router.delete('/delete-course/:id', deleteCourseById);
+// router.delete('/delete-course/:id', deleteCourseById);
 
 module.exports = router;

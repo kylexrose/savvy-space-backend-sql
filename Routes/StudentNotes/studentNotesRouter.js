@@ -4,16 +4,13 @@ const router = express.Router();
 const {
     getNotesByUserId,
     saveNotes,
-    editNote,
-    deleteNote
-} = require('./studentController')
+    updateNote,
+} = require('./studentNotesController')
 
 router.get('/get-notes-by-user-id', getNotesByUserId);
 
 router.post('/save-notes', saveNotes);
 
-router.put('/edit-note', editNote);
-
-router.delete('/delete-note-by-note-id/:id', deleteNote);
+router.put('/edit-note', updateNote);
 
 module.exports = router;

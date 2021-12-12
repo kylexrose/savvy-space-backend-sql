@@ -1,13 +1,14 @@
-const db = require('../../server');
+const {query,db} = require('../../server');
+
 
     // addCourse
     // updateCourseById
     // deleteCourseById
 
 
-module.exports = {
-    getCourseById,
-    addCourse,
-    updateCourseById,
-    deleteCourseById
-}
+// module.exports = {
+//     getCourseById,
+//     addCourse,
+//     updateCourseById,
+//     deleteCourseById
+// }

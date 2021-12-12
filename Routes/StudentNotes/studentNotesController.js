@@ -1,18 +1,15 @@
-const db = require('../../server');
+const {query,db} = require('../../server');
+
 
 async function getNotesByUserId(req, res){
     const user_id = req.params.id;
     const sql = 
         `SELECT * FROM Student_Notes 
-        WHERE user_id = ${user_id}
+        WHERE user_id = ${db.escape(user_id)}
         ORDER BY placement`
     try{
-        db.query(sql, (err, payload)=>{
-            if(err){
-                throw err;
-            }
-            res.json({payload})
-        })
+        const notesArray = await query(sql)
+        res.json({noteArray: notesArray[0]})
     }catch(e){
         res.json({error: e})
     }
@@ -20,50 +17,22 @@ async function getNotesByUserId(req, res){
 
 async function saveNotes(req, res){
     const {user_id, notesArray} = req.body;
-    let noteCount = 0;
+    const sql = `INSERT INTO Student_Notes(user_id, placement, note_json)
+                    VALUES (${db.escape(user_id)}, ${db.escape(notesArray)})`
     try{
-        for(let i = 0; i < notesArray.length; i++){
-            const storeNoteSql = `INSERT INTO Student_Notes(user_id, placement, note_text)
-                                VALUES (${user_id}, ${i}, ${notesArray[i]})`
-            db.query(storeNoteSql, (err)=>{
-                if(err){
-                    console.log(`${noteCount} saved until fail`)
-                    throw err;
-                }
-                noteCount++;
-            })
-        }
-        res.json({success: `${noteCount} notes successfully saved`})
+        await query(sql)
+        res.json({success: `Notes successfully saved`})
     }catch(e){
         res.json({error: e})
     }
 }
 
-async function editNote(req, res){
+async function updateNote(req, res){
     const {note_id, note_text} = req.body;
-    const sql = `UPDATE Student_Notes SET note_text = ${note_text} WHERE note_id = ${note_id}`
+    const sql = `UPDATE Student_Notes SET note_text = ${db.escape(note_text)} WHERE note_id = ${db.escape(note_id)}`
     try{
-        db.query(sql, (err, payload) =>{
-            if(err){
-                throw err;
-            }
-            res.json({success: payload})
-        })
-    }catch(e){
-        res.json({error: e})
-    }
-}
-
-async function deleteNote(req, res){
-    const note_id = req.params.id;
-    const sql = `DELETE FROM Student_Notes WHERE note_id = ${note_id}`
-    try{
-        db.query(sql, (err)=>{
-            if(err){
-                throw err;
-            }
-            res.json({success: 'Note Deleted'})
-        })
+        const notes = await query(sql);
+        res.json({notes: notes[0]})
     }catch(e){
         res.json({error: e})
     }
@@ -72,6 +41,5 @@ async function deleteNote(req, res){
 module.exports = {
     getNotesByUserId,
     saveNotes,
-    editNote,
-    deleteNote
+    updateNote,
 }
