@@ -3,9 +3,9 @@ const util = require('util');
 
 
 const db = mysql.createConnection({
-    host     : "",
+    host     : process.env.RDS,
     user     : 'admin',
-    password : env,
+    password : process.env.DB_PASSWORD,
     database : 'savvySpaceSql',
     port : 3001,
     timeout : 60000,
