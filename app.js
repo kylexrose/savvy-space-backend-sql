@@ -3,7 +3,7 @@ require("dotenv").config();
 const logger = require("morgan"); 
 const cors = require("cors");  
 const {importData, makeDb} = require('./makeDb')
-makeDb();
+//makeDb();
 //importData();
 const port = 3001;
 
