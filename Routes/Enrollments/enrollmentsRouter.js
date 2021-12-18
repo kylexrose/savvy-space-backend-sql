@@ -7,7 +7,7 @@ const {
     removeStudentFromCourse
 } = require('./enrollmentsController')
 
-router.get('/find-courses-by-student-id', getStudentCourses);
+router.post('/find-courses-by-student-id', getStudentCourses);
 
 router.post('/add-student-to-course', enrollStudentInCourse);
 

@@ -7,8 +7,8 @@ async function getStudentCourses(req, res){
         const sql = `SELECT * FROM Enrollments 
                     LEFT JOIN Courses ON Enrollments.course_id = Courses.course_id
                     WHERE student_id = ${db.escape(student_id)}`;
-        const foundStudentCourses = await query(sql);
-        res.json({foundStudentCourses})
+        const courseList = await query(sql);
+        res.json({courseList})
     }catch(e){
         res.json({error: e})
     }

@@ -1,8 +1,8 @@
 const express = require('express');
 const logger = require("morgan"); 
 const cors = require("cors");  
-//const {importData, makeDb} = require('./makeDb')
-//makeDb();
+const {importData, makeDb} = require('./makeDb')
+makeDb();
 //importData();
 const port = 3001;
 
@@ -29,7 +29,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/enrollments', enrollmentsRouter);
 app.use('/api/assigned-work', assignedWorkRouter);
 app.use('/api/courses', coursesRouter);
-app.use('/api/studentNotes', studentNotesRouter);
+app.use('/api/student-notes', studentNotesRouter);
 
 app.listen(port, () =>{
     console.log(`Server started on port ${port}`)

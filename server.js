@@ -3,10 +3,12 @@ const util = require('util');
 
 
 const db = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '123456',
+    host     : 'lms-sql-db.czofcwhq9tvt.us-east-1.rds.amazonaws.com',
+    user     : 'admin',
+    password : 'mySQL0037',
     database : 'savvySpaceSql',
+    port : 3001,
+    timeout : 60000,
     multipleStatements: true
 });
 
