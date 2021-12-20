@@ -8,7 +8,7 @@ const {
     deleteStudentById
 } = require('./studentController')
 
-router.get('/find-student-by-id/:id', getStudentById);
+router.post('/find-student-by-id', getStudentById);
 
 router.post('/add-student', addStudent);
 

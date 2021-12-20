@@ -1,6 +1,5 @@
 const {query,db} = require('../../server');
 
-
 async function getStudentCourses(req, res){
     try{
         const {student_id} = req.body;
@@ -25,6 +24,21 @@ async function enrollStudentInCourse(req, res){
         res.json({error: e})
     }
 }
+
+async function getCourseGrades(req, res){
+    const {student_id, course_id} = req.body;
+    const sql = `SELECT SUM(grade), SUM(total_points) FROM Assigned_Work
+                LEFT JOIN Assignments ON Assigned_Work.assignment_id = Assignments.assignment_id
+                WHERE student_id = ${db.escape(student_id)} AND course_id = ${db.escape(course_id)}`
+    try{
+        const grades = await query(sql);
+        const gradeInCourse = (grades[0]["SUM(grade)"] / grades[0]["SUM(total_points)"] * 100).toFixed(2);
+        res.json({gradeInCourse})
+    }catch(e){
+        res.json({error: e.message})
+    }
+}
+
 async function removeStudentFromCourse(req, res){
     const {student_id, course_id} = req.body;
     const sql =`DELETE FROM Enrollments 
@@ -43,6 +57,7 @@ async function removeStudentFromCourse(req, res){
 
 module.exports = {
     getStudentCourses,
+    getCourseGrades,
     enrollStudentInCourse,
     removeStudentFromCourse
 }

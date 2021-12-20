@@ -7,7 +7,6 @@ async function getNotesByUserId(req, res){
         WHERE user_id = ${db.escape(user_id)}`
     try{
         const notes = await query(sql)
-        console.log(notes)
         res.json({notes: notes[0]})
     }catch(e){
         res.json({error: e})
@@ -16,7 +15,6 @@ async function getNotesByUserId(req, res){
 
 async function updateNote(req, res){
     const {user_id, note_json} = req.body;
-    console.log(user_id, note_json)
     const updateSql = `UPDATE Student_Notes SET note_json = ${db.escape(note_json)} WHERE user_id = ${db.escape(user_id)};`
     const sql= `SELECT note_json from Student_Notes WHERE user_id = ${db.escape(user_id)};`
     try{

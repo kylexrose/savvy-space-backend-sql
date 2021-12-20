@@ -31,7 +31,7 @@ async function login(req, res){
                     payload: "Please check your username and password"
                 })
             }else{
-                const sql = `SELECT user_id, student_id, username FROM Users WHERE username = ${db.escape(username)}`
+                const sql = `SELECT user_id, student_id, username, email FROM Users WHERE username = ${db.escape(username)}`
                 const userInfo = await query(sql);
                 // let jwtToken = jwt.sign(
                 //     {
@@ -67,9 +67,7 @@ async function createUser(req, res){
                     VALUES (${db.escape(student_id)} , '${db.escape(email)}' , '${db.escape(username)}', '${db.escape(hashedPassword)}')`;
         db.query(sql, (err)=>{
             if(err){
-                console.log(err.code)
-                console.log('line 31')
-                throw err;
+                res.json({error: err})
             }
             res.json({message: 'User created...'})
         })

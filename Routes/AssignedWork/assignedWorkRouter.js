@@ -6,7 +6,7 @@ const {
     assignGrade
 } = require('./assignedWorkController')
 
-router.get('/get-student-assignments-by-course', getStudentAssignmentsByCourse);
+router.post('/get-student-assignments-by-course', getStudentAssignmentsByCourse);
 
 router.post('/update-grade', assignGrade);
 

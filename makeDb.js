@@ -140,7 +140,7 @@ const data = {
             assignment_name: 'Writing Assignment #2',
             details: 'This is a small description of the assignment of which this refers. It only includes a preview.',
             total_points: 100,
-            course_id: 99
+            course_id: 97
         },
         {
             assignment_id: 6,
@@ -148,7 +148,7 @@ const data = {
             assignment_name: 'Writing Assignment #3',
             details: 'This is a small description of the assignment of which this refers. It only includes a preview.',
             total_points: 100,
-            course_id: 99
+            course_id: 97
         },
         {
             assignment_id: 7,
@@ -186,7 +186,7 @@ const data = {
         },
         {
             assignment_id: 3,
-            student_id: 123,
+            student_id: 123
         },
         {
             assignment_id: 4,
@@ -251,52 +251,61 @@ const data = {
         {
             assignment_id: 1,
             student_id: 789,
+            grade: 77
         },
         {
             assignment_id: 2,
             student_id: 789,
+            grade: 90
         },
         {
             assignment_id: 3,
             student_id: 789,
+            grade: 83
         },
         {
             assignment_id: 4,
             student_id: 789,
+            grade: 94
         },
         {
             assignment_id: 5,
             student_id: 789,
+            grade: 97
         },
         {
             assignment_id: 6,
             student_id: 789,
+            grade: 68,
         },
         {
             assignment_id: 7,
             student_id: 789,
+            grade: 85
         },
         {
             assignment_id: 8,
             student_id: 789,
+            grade: 91
         },
         {
             assignment_id: 9,
             student_id: 789,
+            grade: 95
         },
     ],
     Student_Notes: [
         {
             user_id: 11,
-            note_json: "[]"
+            note_json: ""
         },
         {
             user_id: 12,
-            note_json: "[]"
+            note_json: ""
         },
         {
             user_id: 13,
-            note_json: "[]"
+            note_json: ""
         },
     ]
 }

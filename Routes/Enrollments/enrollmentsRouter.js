@@ -4,10 +4,13 @@ const router = express.Router();
 const {
     getStudentCourses,
     enrollStudentInCourse,
-    removeStudentFromCourse
+    removeStudentFromCourse,
+    getCourseGrades
 } = require('./enrollmentsController')
 
 router.post('/find-courses-by-student-id', getStudentCourses);
+
+router.post('/get-course-grade', getCourseGrades);
 
 router.post('/add-student-to-course', enrollStudentInCourse);
 

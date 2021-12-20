@@ -2,10 +2,10 @@ const {query,db} = require('../../server');
 
 
 async function getStudentById(req, res){
+    const {student_id} = req.body;
+    const sql = `SELECT * FROM Students WHERE student_id = ${db.escape(student_id)};`
     try{
-        const studentId = req.params.id;
-        const sql = `SELECT * FROM Students WHERE student_id = ${db.escape(studentId)};`
-        const foundStudent = await query(sql)
+        const foundStudent = await query(sql);
         res.json({foundStudent: foundStudent[0]})
     }catch(e){
         res.json({e})
@@ -47,7 +47,7 @@ async function updateStudentById(req, res){
 }
         
 async function deleteStudentById(req, res){
-    const student_id = req.params.id;
+    const {student_id} = req.body;
     const sql = `DELETE FROM Students WHERE student_id = ${db.escape(student_id)}`
     try{
         await query(sql)

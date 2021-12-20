@@ -8,7 +8,7 @@ const {
     deleteCourseById
 } = require('./coursesController')
 
-// router.get('/find-course/', getCourseById);
+router.post('/find-course/', getCourseById);
 
 // router.post('/add-course', addCourse);
 
