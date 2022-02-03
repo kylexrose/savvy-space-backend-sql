@@ -336,12 +336,6 @@ async function importData(){
             secondLine = "";
         }
         await query(sql);
-        console.log(sql)
-    }
-    try{
-
-    }catch(e){
-        console.log(e)
     }
 }
 

@@ -13,8 +13,11 @@ const db = mysql.createConnection({
 });
 
 db.connect(err=>{
-    if(err) console.log(err);
-    console.log('MySql Connected');
+    if(err) {
+        console.log(err);
+    }
+    else{
+        console.log('MySql Connected')};
 });
 
 const query = util.promisify(db.query).bind(db);
