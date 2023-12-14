@@ -6,3 +6,5 @@ There is also a single-use function that will build the database from scratch us
 
 The backend has the capability to further edit the information that what is seen on the frontend UI.
 It uses basic CRUD operations written in SQL and ran by the mysql package.
+
+For the front-end React code, go to: https://github.com/kylexrose/savvy-space-frontend/tree/main
